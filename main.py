@@ -45,11 +45,14 @@ async def on_message(message):
             return
 
     elif "!joebot" in query:
+        query = query[7::]
+        print(f'QUERY-> {query}')
         random.shuffle(beep_boop)
         GPT_response = generate_text(query).replace('?', '')
-        await message.channel.send(f'Systems processing... {beep_boop[0]} {beep_boop[1]} {beep_boop[2]} {beep_boop[3]} {beep_boop[4]}')
+        await message.channel.send(f'Systems processing...{beep_boop[0]} {beep_boop[1]} {beep_boop[2]} {beep_boop[3]} {beep_boop[4]}')
         time.sleep(2)
         await message.channel.send(f' {GPT_response}')
+        print(f'\nRESPONSE:{GPT_response}\n------------------------------------------')
 
 # token confirmation to communicate with Discord API
 JoeGPT.run(my_secret)
